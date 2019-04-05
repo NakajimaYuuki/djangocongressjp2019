@@ -27,25 +27,49 @@
 
 ## ストーリーモード
 
--　システムを動かして実演しつつは大変、実際にとても（スクショで対応か？）
+-　システムを動かして実演しつつは大変、実際にとても（スクショで対応か）
+- スライドは英語で作ろうかな(英語圏向けにもなる)
 
-- ○○データーベース
-- アイドルマスタ(not アイドルマスター)
-  − 周りに通じるか不安。。。タイトルとあまり繋がりがない、知らない人にも笑って貰えるようにするには？
-- 政治ネタは御法度！（トランプ大統領ネタ）
-- ミュージシャンマスタ
-  - というふりをしたアイドルマスタ？
-- 狂気を感じるものが良いな・・
-- モデルはシンプルなのがいい。。 A ,　B, C many to many ぐらい
-- 知識にたよらないもの、誰かを傷つけないもの
-- オカルトネタとか？（今オカルト少年とかいなくね？）
+##　ストーリー詳細
+
+- 簡単な一覧画面だけ用意
+- 普通のモデル、fk、M2Mは宣言させたい
+- PresidentM@ster
+
+## Presidentマスター
+
+## DjangoConのプレゼン一覧
+
+アイドル情報データベースを作ろう
+
+- Idle
+  - user (one to one)
+  - idle_group(m2m, blank=True)
+  - features(json)
+  - is_retired(default=False)
+
+- IdleGroup
+  - name
+  - start_date
+  - end_date(null=True)
+  - genre(m2m)
+  - features(json)
+
+- Genre
+  - name
 
 ## 入れたい小ネタ
-
-- make query great again  yes we can!
 
 ## 課題　スライドは何で作る？
 
 - Google　slideが楽？
 - 普通のスライド(google slide) 
 - Reveal.jsとか？
+
+
+### Presentationの方法
+
+- 参考　https://www.youtube.com/watch?v=7fGdwBd_Yuk
+  - 最初に目的を言う
+  - 信頼性を担保する話し方をする、長く話すパートと短く話すパートを分ける
+  - コアメッセージは短くする
