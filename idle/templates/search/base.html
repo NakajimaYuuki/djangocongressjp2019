@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<title>P　</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700">
+<link rel="stylesheet" href="{% static 'products/css/base.css' %}" media="all">
+<link rel="shortcut icon" type="image/png" href="{% static 'products/img/favicon.ico' %}">
+{% block extend_css %}
+{{ extend_css }}
+{% endblock %}
+<script src="{% static 'products/js/jquery.js' %}"></script>
+<script src="{% static 'products/js/common.js' %}"></script>
+{% block extend_js %}
+{{ extend_js }}
+{% endblock %}
+<!--[if lt IE 9]><script src="/common/js/html5shiv.min.js"></script><![endif]-->
+</head>
+{% block content %}
+{{ content }}
+{% endblock %}
+</html>
