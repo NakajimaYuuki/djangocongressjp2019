@@ -5,14 +5,14 @@ transition: 'default'
 
 ---
 
-### 移動するなら今のうち！　
+### Make Query Great Agarin!
 
 - 話すこと
-  - Djangoのormでのselect全般
+  - DjangoのOR/Mapperでのselect全般
 - 対象
   - 初心者
-  - filterやexcludeしか分からない
-  - ORM？SQL書けばええんやという人
+  - select時にfilterやexcludeしか分からない
+  - O/RM？SQL書けばいいのでは？
 
 ---
 
@@ -27,32 +27,92 @@ Nakajima Yuuki
 - Django歴3年ぐらい
 - Web歴3年ぐらい
 - C0B0L歴5年ぐらい
-- 日本システム技研所属
+- 日本システム技研
 - twitter @propretariat
 
 ---
 
 ## Purpose
 
-i can't use django query...  
-↓  
-make query great again  
-↓   
-yes we can!  
-↓  
-keep query great again!
+Djanoのselectでもう悩まない！
 
 ---
 
-### story 
-
-a long time ago in a galaxy far far away....  
-a man create idle database...
-
-
-[昔々、銀河の彼方で、ある男が、アイドルデータベースを作ろうとした物語である....]
+### story
+やばい寿司屋さんこと
 
 ---
 
 ### models
-　
+
+pass
+
+---
+
+#### 全件取得
+  
+~~~python
+Sale.objects.all()
+~~~
+
+~~~SQL
+select * from sisi_app_sales;
+~~~
+
+---
+
+### ソートしてくれ
+
+~~~python
+Sale.objects.all().order_by('-sales_date')
+~~~
+
+~~~SQL
+select * from sisi_app_sales order sales_date DESC;
+~~~
+
+---
+
+### 寿司ネタで検索したい
+
+~~~python
+Sale.objects.filter(name="マグロ").order_by('-sales_date')
+~~~
+
+~~~SQL
+select * from sisi_app_sales where name = 'マグロ' order sales_date DESC;
+~~~
+
+---
+
+---
+
+### 寿司ネタでand検索したい
+
+~~~python
+Sale.objects.filter(name="マグロ", sales_date_="今日").order_by('-sales_date')
+~~~
+
+~~~SQL
+select * from sisi_app_sales where name = 'マグロ' order sales_date DESC;
+~~~
+
+
+---
+
+### 寿司ネタでor検索したい
+
+Qオブジェクトの使い方
+ - 自在にQueyを作れる
+ - or もandも作れる
+ -　filiterng条件を組み立てるときに使う
+
+~~~python
+q = Q(name="マグロ")
+q |= Q(name="カルフォルニアロール")
+Sale.objects.filter(q).order_by('-sales_date')
+~~~
+
+~~~SQL
+TODO
+~~~
