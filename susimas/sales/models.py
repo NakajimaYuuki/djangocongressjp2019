@@ -1,18 +1,17 @@
 from django.db import models
 
 
-class Sushi(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.IntegerField(default=0)
+class SushiTopping(models.Model):
+    name = models.CharField(max_length=255, help_text="ex) トロ、穴子、サーモン、ハマチ、ブリ")
 
     def __str__(self):
         return self.name
 
 
-class Menu(models.Model):
-    name = models.CharField(max_length=255, primary_key=True, help_text='ex ) 松コース、竹コース、シェフのお任せ10貫')
+class Sushi(models.Model):
+    name = models.CharField(max_length=255, primary_key=True, help_text='ex ) 松コース、シェフのお任せ10貫、単品も含む')
     price = models.IntegerField(default=0)
-    sushi_lists = models.ManyToManyField(Sushi, related_name='menus')
+    sushi_toppings = models.ManyToManyField(SushiTopping)
 
     def __str__(self):
         return self.name
@@ -20,8 +19,7 @@ class Menu(models.Model):
 
 class Sale(models.Model):
     saled_date = models.CharField(max_length=255)
-    menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
     sushi = models.ForeignKey(Sushi, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f'{self.menu.name}-{self.saled_date}'
+        return f'{self.sushi.name}-{self.saled_date}'
